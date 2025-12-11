@@ -6,14 +6,59 @@ import fastify, {
   type FastifyReply,
   type FastifyRequest,
 } from "fastify";
+import {
+  jsonSchemaTransform,
+  serializerCompiler,
+  validatorCompiler,
+  ZodTypeProvider,
+} from "fastify-type-provider-zod";
 import { loginRoutes } from "./routes/login.route";
+import { userRoutes } from "./routes/user.route";
 
 //Instaciar o servidor
-const server: FastifyInstance = fastify();
+const server: FastifyInstance = fastify().withTypeProvider<ZodTypeProvider>();
+
+//Configurações
+server.setSerializerCompiler(serializerCompiler);
+server.setValidatorCompiler(validatorCompiler);
 
 //Plugins
 server.register(fastifyCors);
-server.register(fastifySwagger, {});
+server.register(fastifySwagger, {
+  openapi: {
+    info: {
+      title: "API - Notry Vision",
+      version: "1.0.0",
+      description: `
+A **API Notry Vision** fornece dados staticos para o projeto WEB.
+
+### 📦 Convenções
+- Todas as respostas são no formato **JSON**
+- Status HTTP seguem os padrões:
+  - \`200\` Sucesso
+  - \`201\` Criado
+  - \`400\` Requisição inválida
+  - \`401\` Não autorizado
+  - \`404\` Não encontrado
+  - \`500\` Erro interno
+
+---
+🔧 **Suporte**: entre em contato com a equipe Notry Vision em caso de dúvidas.
+      `,
+    },
+    // components: {
+    //   securitySchemes: {
+    //     bearerAuth: {
+    //       type: "http",
+    //       scheme: "bearer",
+    //       bearerFormat: "JWT",
+    //     },
+    //   },
+    // },
+    // security: [{ bearerAuth: [] }],
+  },
+  transform: jsonSchemaTransform,
+});
 server.register(ScalarFastifyApiReference, {
   routePrefix: "/docs",
   configuration: {
@@ -27,6 +72,7 @@ server.get("/", (req: FastifyRequest, replay: FastifyReply) => {
 });
 
 server.register(loginRoutes);
+server.register(userRoutes);
 
 //configurações de porta
 const PORT = Number(process.env.PORT) || 3000;

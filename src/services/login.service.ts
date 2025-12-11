@@ -1,5 +1,5 @@
 import { users } from "@/db/users";
-import type { LoginRequest, LoginResponse } from "@/types/login";
+import type { LoginRequest } from "@/types/login";
 
 import type { FastifyReply, FastifyRequest } from "fastify";
 
@@ -15,7 +15,11 @@ export const LoginService = (req: FastifyRequest, reply: FastifyReply) => {
       reply.code(401).send({ message: "credenciais inválidas" });
     }
 
-    const { id, name, cargo } = isUser as LoginResponse;
+    const { id, name, cargo } = isUser as {
+      id: string;
+      name: string;
+      cargo: string;
+    };
     reply.code(200).send({ id, username, name, cargo });
   } catch (error) {
     console.log(error);
