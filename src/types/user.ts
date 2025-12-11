@@ -10,6 +10,6 @@ export type userRequest = {
   username: string;
   name: string;
   password: string;
-  // cargo: "operador" | "supervisor" | "admin";
-  cargo: string;
+  cargo: "operador" | "supervisor" | "admin";
+  // cargo: string;
 };

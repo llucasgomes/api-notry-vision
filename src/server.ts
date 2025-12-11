@@ -46,16 +46,6 @@ A **API Notry Vision** fornece dados staticos para o projeto WEB.
 🔧 **Suporte**: entre em contato com a equipe Notry Vision em caso de dúvidas.
       `,
     },
-    // components: {
-    //   securitySchemes: {
-    //     bearerAuth: {
-    //       type: "http",
-    //       scheme: "bearer",
-    //       bearerFormat: "JWT",
-    //     },
-    //   },
-    // },
-    // security: [{ bearerAuth: [] }],
   },
   transform: jsonSchemaTransform,
 });

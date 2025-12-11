@@ -45,7 +45,14 @@ export default async function userController(server: FastifyInstance) {
         tags: ["User"],
         body: z.object({
           name: z.string().min(1, "Name é obrigatório"),
-          cargo: z.string().min(1, "Cargo é obrigatório"),
+          cargo: z
+            .enum(["operador", "supervisor", "admin"])
+            .refine(
+              (val) => ["operador", "supervisor", "admin"].includes(val),
+              {
+                message: "Cargo deve ser operador, supervisor ou admin",
+              }
+            ),
           username: z.string().min(1, "Username é obrigatório"),
           password: z.string().min(1, "Password é obrigatório"),
         }),
