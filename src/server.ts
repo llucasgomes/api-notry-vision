@@ -12,7 +12,10 @@ import {
   validatorCompiler,
   ZodTypeProvider,
 } from "fastify-type-provider-zod";
+import { machines } from "./db/machines";
+import { simulator } from "./functions/simulations";
 import { loginRoutes } from "./routes/login.route";
+import { machinesRoutes } from "./routes/machines.route";
 import { userRoutes } from "./routes/user.route";
 
 //Instaciar o servidor
@@ -21,6 +24,9 @@ const server: FastifyInstance = fastify().withTypeProvider<ZodTypeProvider>();
 //Configurações
 server.setSerializerCompiler(serializerCompiler);
 server.setValidatorCompiler(validatorCompiler);
+
+//functions inciaveis com o servidor
+simulator.iniciarTodas(machines);
 
 //Plugins
 server.register(fastifyCors);
@@ -63,6 +69,7 @@ server.get("/", (req: FastifyRequest, replay: FastifyReply) => {
 
 server.register(loginRoutes);
 server.register(userRoutes);
+server.register(machinesRoutes);
 
 //configurações de porta
 const PORT = Number(process.env.PORT) || 3000;
