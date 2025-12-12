@@ -24,12 +24,12 @@ export default async function loginController(server: FastifyInstance) {
             .describe("Evento processado com sucesso"),
           401: z
             .object({
-              messsage: z.string(),
+              message: z.string(),
             })
             .describe("credenciais inválidas"),
           500: z
             .object({
-              messsage: z.string(),
+              message: z.string(),
             })
             .describe("Erro desconhecido"),
         },

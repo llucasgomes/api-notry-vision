@@ -12,7 +12,7 @@ export const LoginService = (req: FastifyRequest, reply: FastifyReply) => {
     );
 
     if (!isUser) {
-      reply.code(401).send({ message: "credenciais inválidas" });
+      return reply.code(401).send({ message: "credenciais inválidas" });
     }
 
     const { id, name, cargo } = isUser as {
