@@ -13,3 +13,10 @@ export type userRequest = {
   cargo: "operador" | "supervisor" | "admin";
   // cargo: string;
 };
+
+export type UpdateUserRequest = {
+  username?: string;
+  name?: string;
+  password?: string;
+  cargo?: string;
+};

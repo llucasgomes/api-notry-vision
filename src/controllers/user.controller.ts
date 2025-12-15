@@ -3,6 +3,7 @@ import {
   deleteUserById,
   findUserById,
   getAllUserService,
+  updateUserById,
 } from "@/services/user.service";
 
 import type { FastifyInstance } from "fastify";
@@ -144,4 +145,61 @@ export default async function userController(server: FastifyInstance) {
     },
     findUserById
   );
+  server.put(
+  "/:id",
+  {
+    schema: {
+      description: "Atualiza os dados de um usuário pelo ID",
+      tags: ["User"],
+
+      params: z.object({
+        id: z.string().uuid(),
+      }),
+
+      body: z.object({
+        name: z.string().min(1).optional(),
+        cargo: z.string().min(1).optional(),
+        username: z.string().min(1).optional(),
+        password: z.string().min(6).optional(),
+      }),
+
+      response: {
+        200: z
+          .object({
+            id: z.string().uuid(),
+            name: z.string(),
+            cargo: z.string(),
+            username: z.string(),
+          })
+          .describe("Usuário atualizado com sucesso"),
+
+        400: z
+          .object({
+            message: z.string(),
+          })
+          .describe("ID inválido ou dados inválidos"),
+
+        404: z
+          .object({
+            message: z.string(),
+          })
+          .describe("Usuário não encontrado"),
+
+        409: z
+          .object({
+            message: z.string(),
+          })
+          .describe("Username já está em uso"),
+
+        500: z
+          .object({
+            message: z.string(),
+          })
+          .describe("Erro interno do servidor"),
+      },
+    },
+  },
+  updateUserById
+);
+
 }

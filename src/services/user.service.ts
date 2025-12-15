@@ -1,5 +1,5 @@
 import { users } from "@/db/users";
-import { userRequest } from "@/types/user";
+import { UpdateUserRequest, userRequest } from "@/types/user";
 import { FastifyReply, FastifyRequest } from "fastify";
 
 export const getAllUserService = (req: FastifyRequest, res: FastifyReply) => {
@@ -78,5 +78,64 @@ export const findUserById = (req: FastifyRequest, res: FastifyReply) => {
     return res.status(200).send(user);
   } catch (error) {
     res.code(500).send({ message: "Erro interno" });
+  }
+};
+
+export const updateUserById = (
+  req: FastifyRequest<{
+    Params: { id: string };
+    Body: UpdateUserRequest;
+  }>,
+  res: FastifyReply
+) => {
+  const { id } = req.params;
+  const { username, name, password, cargo } = req.body;
+
+  try {
+    if (!id) {
+      return res.status(400).send({ message: "ID não informado" });
+    }
+
+    // encontrar usuário
+    const userIndex = users.findIndex((user) => user.id === id);
+
+    if (userIndex === -1) {
+      return res.status(404).send({ message: "Usuário não encontrado" });
+    }
+
+    // valida username duplicado (se estiver sendo alterado)
+    if (username) {
+      const usernameExists = users.some(
+        (user) => user.username === username && user.id !== id
+      );
+
+      if (usernameExists) {
+        return res
+          .status(409)
+          .send({ message: "Username já está em uso" });
+      }
+    }
+
+       // Atualiza usuário
+    users[userIndex] = {
+      ...users[userIndex],
+      ...(name && { name }),
+      ...(cargo && { cargo }),
+      ...(username && { username }),
+      ...(password && { password }),
+    };
+
+    const updatedUser = users[userIndex];
+
+   // ⚠️ RETORNE SOMENTE O QUE O SCHEMA DEFINE
+    return res.code(200).send({
+      id: updatedUser.id,
+      name: updatedUser.name,
+      cargo: updatedUser.cargo,
+      username: updatedUser.username,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).send({ message: "Erro interno" });
   }
 };

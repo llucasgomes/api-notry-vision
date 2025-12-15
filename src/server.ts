@@ -17,6 +17,7 @@ import { simulator } from "./functions/simulations";
 import { loginRoutes } from "./routes/login.route";
 import { machinesRoutes } from "./routes/machines.route";
 import { userRoutes } from "./routes/user.route";
+import { sectorRoutes } from "./routes/sector.route";
 
 //Instaciar o servidor
 const server: FastifyInstance = fastify().withTypeProvider<ZodTypeProvider>();
@@ -70,6 +71,7 @@ server.get("/", (req: FastifyRequest, replay: FastifyReply) => {
 server.register(loginRoutes);
 server.register(userRoutes);
 server.register(machinesRoutes);
+server.register(sectorRoutes);
 
 //configurações de porta
 const PORT = Number(process.env.PORT) || 3000;
