@@ -23,6 +23,8 @@ export default async function userController(server: FastifyInstance) {
                 id: z.string(),
                 username: z.string(),
                 name: z.string(),
+                sector:z.string(),
+                image:z.string(),
                 password: z.string(),
                 cargo: z.string(),
               })
@@ -56,6 +58,8 @@ export default async function userController(server: FastifyInstance) {
             ),
           username: z.string().min(1, "Username é obrigatório"),
           password: z.string().min(1, "Password é obrigatório"),
+          sector:z.string().min(1, "Setor é obrigatório"),
+          image:z.string().optional(),
         }),
         response: {
           201: z.object({}).describe("Evento processado com sucesso"),
@@ -121,6 +125,8 @@ export default async function userController(server: FastifyInstance) {
               id: z.string().uuid(),
               name: z.string(),
               cargo: z.string(),
+              sector:z.string(),
+              image:z.string(),
               username: z.string(),
               password: z.string(),
             })
@@ -159,6 +165,8 @@ export default async function userController(server: FastifyInstance) {
       body: z.object({
         name: z.string().min(1).optional(),
         cargo: z.string().min(1).optional(),
+        sector:z.string().min(1).optional(),
+        image:z.string().min(7).optional(),
         username: z.string().min(1).optional(),
         password: z.string().min(6).optional(),
       }),
@@ -169,6 +177,8 @@ export default async function userController(server: FastifyInstance) {
             id: z.string().uuid(),
             name: z.string(),
             cargo: z.string(),
+            sector:z.string(),
+            image:z.string(),
             username: z.string(),
           })
           .describe("Usuário atualizado com sucesso"),

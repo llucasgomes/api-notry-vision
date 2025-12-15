@@ -12,7 +12,7 @@ export const getAllUserService = (req: FastifyRequest, res: FastifyReply) => {
 };
 
 export const createUser = (req: FastifyRequest, res: FastifyReply) => {
-  const { cargo, name, password, username } = req.body as userRequest;
+  const { cargo, name, password, username, sector,image } = req.body as userRequest;
 
   try {
     const userExist = users.find((user) => user.username == username);
@@ -23,9 +23,12 @@ export const createUser = (req: FastifyRequest, res: FastifyReply) => {
     users.push({
       id: crypto.randomUUID(),
       cargo,
+      image: image ?? "",
       name,
       password,
       username,
+      logged:false,
+      sector
     });
 
     res.code(201).send();
@@ -89,7 +92,7 @@ export const updateUserById = (
   res: FastifyReply
 ) => {
   const { id } = req.params;
-  const { username, name, password, cargo } = req.body;
+  const { username, name, password, cargo,logged, sector,image } = req.body;
 
   try {
     if (!id) {
@@ -123,6 +126,10 @@ export const updateUserById = (
       ...(cargo && { cargo }),
       ...(username && { username }),
       ...(password && { password }),
+      ...(logged && { logged }),
+      ...(sector && { sector }),
+      ...(image && { image }),
+
     };
 
     const updatedUser = users[userIndex];
@@ -131,8 +138,11 @@ export const updateUserById = (
     return res.code(200).send({
       id: updatedUser.id,
       name: updatedUser.name,
+      image: updatedUser.image,
       cargo: updatedUser.cargo,
       username: updatedUser.username,
+      sector:updatedUser.sector,
+      logged:updatedUser.logged
     });
   } catch (error) {
     console.error(error);
