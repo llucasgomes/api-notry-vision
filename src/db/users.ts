@@ -1,13 +1,13 @@
-import { user } from "@/types/user";
-import { faker } from '@faker-js/faker';
+import { faker } from "@faker-js/faker";
+import { user } from "../types/user";
 
 export const users: user[] = [
   // ───── OPERADORES ─────
   {
     id: "f3c2a1cd-2b7f-4c98-9fb1-7e3d8b3f2d89",
     username: "operador1",
-    image:faker.image.avatarGitHub(),
-    name:faker.person.fullName(),
+    image: faker.image.avatarGitHub(),
+    name: faker.person.fullName(),
     password: "123456",
     cargo: "operador",
     logged: false,
@@ -16,8 +16,8 @@ export const users: user[] = [
   {
     id: "1a8c9b6e-7d3f-4b3a-9f42-1e2b9d0a7c11",
     username: "operador2",
-    image:faker.image.avatarGitHub(),
-    name:faker.person.fullName(),
+    image: faker.image.avatarGitHub(),
+    name: faker.person.fullName(),
     password: "123456",
     cargo: "operador",
     logged: false,
@@ -26,8 +26,8 @@ export const users: user[] = [
   {
     id: "2b6f1d3a-9e74-4c1a-8c3f-7d2a1b0e4f22",
     username: "operador3",
-    image:faker.image.avatarGitHub(),
-    name:faker.person.fullName(),
+    image: faker.image.avatarGitHub(),
+    name: faker.person.fullName(),
     password: "123456",
     cargo: "operador",
     logged: false,
@@ -36,8 +36,8 @@ export const users: user[] = [
   {
     id: "3c9f2a1e-6b4d-4f7a-8e11-9d0c2b5a7333",
     username: "operador4",
-    image:faker.image.avatarGitHub(),
-    name:faker.person.fullName(),
+    image: faker.image.avatarGitHub(),
+    name: faker.person.fullName(),
     password: "123456",
     cargo: "operador",
     logged: false,
@@ -46,19 +46,19 @@ export const users: user[] = [
   {
     id: "4e1d9c7a-8b2f-4a33-9c61-0f2e6b5d8444",
     username: "operador5",
-    image:faker.image.avatarGitHub(),
-    name:faker.person.fullName(),
+    image: faker.image.avatarGitHub(),
+    name: faker.person.fullName(),
     password: "123456",
     cargo: "operador",
     logged: false,
     sector: "Injeção",
   },
-   // ───── SUPERVISORES ─────
+  // ───── SUPERVISORES ─────
   {
     id: "9e74b0fd-51e6-4b0d-8d25-2bd9b1c6a4f3",
     username: "supervisor1",
-    image:faker.image.avatarGitHub(),
-    name:faker.person.fullName(),
+    image: faker.image.avatarGitHub(),
+    name: faker.person.fullName(),
     password: "123456",
     cargo: "supervisor",
     logged: false,
@@ -67,8 +67,8 @@ export const users: user[] = [
   {
     id: "5f2c7a9e-1b6d-4e11-8a44-9d0c3f6b9555",
     username: "supervisor2",
-    image:faker.image.avatarGitHub(),
-    name:faker.person.fullName(),
+    image: faker.image.avatarGitHub(),
+    name: faker.person.fullName(),
     password: "123456",
     cargo: "supervisor",
     logged: false,
@@ -77,8 +77,8 @@ export const users: user[] = [
   {
     id: "6a9d1c2f-7e3b-4f55-8c21-0b4e9d6a0666",
     username: "supervisor3",
-    image:faker.image.avatarGitHub(),
-    name:faker.person.fullName(),
+    image: faker.image.avatarGitHub(),
+    name: faker.person.fullName(),
     password: "123456",
     cargo: "supervisor",
     logged: false,
@@ -87,8 +87,8 @@ export const users: user[] = [
   {
     id: "7b3e6d9a-4c1f-4a77-9e52-2d0b8c1f1777",
     username: "supervisor4",
-    image:faker.image.avatarGitHub(),
-    name:faker.person.fullName(),
+    image: faker.image.avatarGitHub(),
+    name: faker.person.fullName(),
     password: "123456",
     cargo: "supervisor",
     logged: false,
@@ -97,8 +97,8 @@ export const users: user[] = [
   {
     id: "8c4a0f6b-9d2e-4b99-8f31-1c7d3a2e2888",
     username: "supervisor5",
-    image:faker.image.avatarGitHub(),
-    name:faker.person.fullName(),
+    image: faker.image.avatarGitHub(),
+    name: faker.person.fullName(),
     password: "123456",
     cargo: "supervisor",
     logged: false,
@@ -107,11 +107,11 @@ export const users: user[] = [
   {
     id: "d14d6c9e-8c92-4320-a0c4-1f0f7e62e5bb",
     username: "admin",
-    image:faker.image.avatarGitHub(),
-    name:faker.person.fullName(),
+    image: faker.image.avatarGitHub(),
+    name: faker.person.fullName(),
     password: "123456",
     cargo: "admin",
-    logged:false,
-    sector:"Extrusão"
+    logged: false,
+    sector: "Extrusão",
   },
 ];
