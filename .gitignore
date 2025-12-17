@@ -37,6 +37,3 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 bun.lock
 package-lock.json
 build
-
-.vercel
-.env*.local

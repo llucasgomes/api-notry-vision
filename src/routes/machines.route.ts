@@ -1,4 +1,4 @@
-import machinesController from "../controllers/machines.controller";
+import machinesController from "@/controllers/machines.controller";
 import type { FastifyInstance } from "fastify";
 
 export async function machinesRoutes(server: FastifyInstance) {

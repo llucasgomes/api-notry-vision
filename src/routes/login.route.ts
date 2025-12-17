@@ -1,4 +1,4 @@
-import loginController from "../controllers/login.controller";
+import loginController from "@/controllers/login.controller";
 import type { FastifyInstance } from "fastify";
 
 export async function loginRoutes(server: FastifyInstance) {

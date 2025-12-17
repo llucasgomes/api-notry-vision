@@ -1,5 +1,5 @@
-import { setores } from "../db/sectors";
-import { sectorRequest } from "../types/sector";
+import { setores } from "@/db/sectors";
+import { sectorRequest } from "@/types/sector";
 import { FastifyReply, FastifyRequest } from "fastify";
 
 export const allSectorService = (req: FastifyRequest, res: FastifyReply) => {

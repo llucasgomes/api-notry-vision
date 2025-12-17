@@ -1,4 +1,4 @@
-import { Maquina } from "../types/machines";
+import { Maquina } from "@/types/machines";
 
 export const simulator = {
   gerarValor(min: number, max: number) {

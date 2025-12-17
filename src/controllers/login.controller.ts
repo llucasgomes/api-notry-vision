@@ -1,7 +1,6 @@
-
+import { LoginService } from "@/services/login.service";
 import type { FastifyInstance } from "fastify";
 import z from "zod";
-import { LoginService } from "../services/login.service";
 
 export default async function loginController(server: FastifyInstance) {
   server.post(

@@ -1,5 +1,5 @@
-import { users } from "../db/users";
-import type { LoginRequest } from "../types/login";
+import { users } from "@/db/users";
+import type { LoginRequest } from "@/types/login";
 
 import type { FastifyReply, FastifyRequest } from "fastify";
 
