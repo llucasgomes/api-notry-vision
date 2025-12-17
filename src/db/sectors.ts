@@ -1,4 +1,4 @@
-import { sector } from "../types/sector";
+import { sector } from "@/types/sector";
 
 export const setores: sector[] = [
   { id: "7c2d3b5e-84f4-4c24-9c7d-1fc2a9b32e5a", name: "Extrusão" },
