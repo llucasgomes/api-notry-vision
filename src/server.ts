@@ -16,8 +16,8 @@ import { machines } from "./db/machines";
 import { simulator } from "./functions/simulations";
 import { loginRoutes } from "./routes/login.route";
 import { machinesRoutes } from "./routes/machines.route";
-import { userRoutes } from "./routes/user.route";
 import { sectorRoutes } from "./routes/sector.route";
+import { userRoutes } from "./routes/user.route";
 
 //Instaciar o servidor
 const server: FastifyInstance = fastify().withTypeProvider<ZodTypeProvider>();
@@ -30,7 +30,9 @@ server.setValidatorCompiler(validatorCompiler);
 simulator.iniciarTodas(machines);
 
 //Plugins
-server.register(fastifyCors);
+server.register(fastifyCors, {
+  origin: "*",
+});
 server.register(fastifySwagger, {
   openapi: {
     info: {
