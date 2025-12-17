@@ -1,11 +1,11 @@
-import { getMachinesService } from "@/services/machine.service";
+import { getMachinesService } from "../services/machine.service";
 import {
   alertaSchema,
   configSimulacaoSchema,
   kpisAtuaisSchema,
   metasSchema,
   registroHistoricoSchema,
-} from "@/validations/machine-schema";
+} from "../validations/machine-schema";
 
 import type { FastifyInstance } from "fastify";
 import z from "zod";

@@ -4,7 +4,7 @@ import {
   findUserById,
   getAllUserService,
   updateUserById,
-} from "@/services/user.service";
+} from "../services/user.service";
 
 import type { FastifyInstance } from "fastify";
 import z from "zod";

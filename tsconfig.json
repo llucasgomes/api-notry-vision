@@ -6,10 +6,7 @@
     "outDir": "./build",
     "rootDir": "./src",
 
-    "baseUrl": "./src",
-    "paths": {
-      "@/*": ["*"]
-    },
+  
 
     "strict": true,
     "skipLibCheck": true,

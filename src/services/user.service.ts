@@ -1,5 +1,5 @@
-import { users } from "@/db/users";
-import { UpdateUserRequest, userRequest } from "@/types/user";
+import { users } from "../db/users";
+import { UpdateUserRequest, userRequest } from "../types/user";
 import { FastifyReply, FastifyRequest } from "fastify";
 
 export const getAllUserService = (req: FastifyRequest, res: FastifyReply) => {

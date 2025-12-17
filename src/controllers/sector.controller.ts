@@ -1,10 +1,4 @@
-import { allSectorService, createSectorService, deleteSectorService, findSectorById, updateSectorService } from "@/services/sector.service";
-import {
-  createUser,
-  deleteUserById,
-  findUserById,
-  getAllUserService,
-} from "@/services/user.service";
+import { allSectorService, createSectorService, deleteSectorService, findSectorById, updateSectorService } from "../services/sector.service";
 
 import type { FastifyInstance } from "fastify";
 import z from "zod";
